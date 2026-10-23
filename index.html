@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cassette Futurism - System Operator</title>
+  <style>
+    :root {
+      --primary: #00ffff;
+      --secondary: #ff00ff;
+      --accent: #ffff00;
+      --dark: #0a0a1a;
+      --light: #f0f0ff;
+      --font-main: 'Courier New', monospace;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background-color: var(--dark);
+      color: var(--light);
+      font-family: var(--font-main);
+      line-height: 1.6;
+      min-height: 100vh;
+      padding: 20px;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    header {
+      text-align: center;
+      padding: 20px 0;
+      border-bottom: 2px solid var(--primary);
+      margin-bottom: 30px;
+    }
+
+    h1 {
+      font-size: 2.5rem;
+      text-transform: uppercase;
+      letter-spacing: 3px;
+      background: linear-gradient(90deg, var(--primary), var(--secondary));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      text-shadow: 0 0 10px rgba(0, 255, 255, 0.3);
+    }
+
+    .system-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 20px;
+      margin-bottom: 30px;
+    }
+
+    .panel {
+      background: rgba(10, 10, 30, 0.8);
+      border: 1px solid var(--primary);
+      border-radius: 8px;
+      padding: 20px;
+      box-shadow: 0 0 15px rgba(0, 255, 255, 0.2);
+    }
+
+    .panel h2 {
+      color: var(--primary);
+      margin-bottom: 15px;
+      font-size: 1.5rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    .control-group {
+      margin-bottom: 15px;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 5px;
+      color: var(--accent);
+    }
+
+    input, select, button {
+      width: 100%;
+      padding: 10px;
+      background: rgba(0, 0, 0, 0.5);
+      border: 1px solid var(--secondary);
+      color: var(--light);
+      font-family: var(--font-main);
+      border-radius: 4px;
+    }
+
+    button {
+      background: linear-gradient(90deg, var(--secondary), var(--primary));
+      cursor: pointer;
+      font-weight: bold;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      transition: all 0.3s ease;
+    }
+
+    button:hover {
+      transform: scale(1.05);
+      box-shadow: 0 0 15px rgba(255, 0, 255, 0.5);
+    }
+
+    .status-display {
+      background: rgba(0, 0, 0, 0.5);
+      border: 1px solid var(--accent);
+      padding: 15px;
+      border-radius: 4px;
+      margin-top: 20px;
+      min-height: 60px;
+    }
+
+    .status-display p {
+      margin-bottom: 5px;
+    }
+
+    .svg-container {
+      text-align: center;
+      margin: 30px 0;
+    }
+
+    svg {
+      width: 100%;
+      max-width: 600px;
+      height: auto;
+    }
+
+    .pulse {
+      animation: pulse 2s infinite;
+    }
+
+    @keyframes pulse {
+      0% { opacity: 0.7; }
+      50% { opacity: 1; }
+      100% { opacity: 0.7; }
+    }
+
+    .scanline {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 10px;
+      background: rgba(0, 255, 255, 0.1);
+      animation: scan 4s linear infinite;
+    }
+
+    @keyframes scan {
+      0% { top: 0; }
+      100% { top: 100%; }
+    }
+
+    footer {
+      text-align: center;
+      padding: 20px 0;
+      border-top: 2px solid var(--secondary);
+      margin-top: 30px;
+      font-size: 0.9rem;
+      color: #aaa;
+    }
+
+    @media (max-width: 768px) {
+      .system-grid {
+        grid-template-columns: 1fr;
+      }
+
+      h1 {
+        font-size: 2rem;
+      }
+
+      .panel {
+        padding: 15px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="scanline"></div>
+  <div class="container">
+    <header>
+      <h1>Cassette Futurism System Operator</h1>
+      <p>Control Interface for Advanced Systems</p>
+    </header>
+
+    <div class="svg-container">
+      <svg viewBox="0 0 600 300" xmlns="http://www.w3.org/2000/svg">
+        <!-- Background -->
+        <rect width="600" height="300" fill="#0a0a1a" />
+        
+        <!-- Grid Lines -->
+        <g stroke="#00ffff" stroke-opacity="0.2" stroke-width="1">
+          <line x1="0" y1="0" x2="600" y2="0" />
+          <line x1="0" y1="50" x2="600" y2="50" />
+          <line x1="0" y1="100" x2="600" y2="100" />
+          <line x1="0" y1="150" x2="600" y2="150" />
+          <line x1="0" y1="200" x2="600" y2="200" />
+          <line x1="0" y1="250" x2="600" y2="250" />
+          <line x1="0" y1="300" x2="600" y2="300" />
+          
+          <line x1="0" y1="0" x2="0" y2="300" />
+          <line x1="100" y1="0" x2="100" y2="300" />
+          <line x1="200" y1="0" x2="200" y2="300" />
+          <line x1="300" y1="0" x2="300" y2="300" />
+          <line x1="400" y1="0" x2="400" y2="300" />
+          <line x1="500" y1="0" x2="500" y2="300" />
+          <line x1="600" y1="0" x2="600" y2="300" />
+        </g>
+        
+        <!-- Central Console -->
+        <rect x="200" y="100" width="200" height="100" fill="#000" stroke="#00ffff" stroke-width="2" rx="10" />
+        
+        <!-- Control Panels -->
+        <rect x="220" y="120" width="60" height="60" fill="#000" stroke="#ff00ff" stroke-width="1" />
+        <rect x="320" y="120" width="60" height="60" fill="#000" stroke="#ff00ff" stroke-width="1" />
+        
+        <!-- Status Lights -->
+        <circle cx="240" cy="140" r="8" fill="#00ffff" class="pulse" />
+        <circle cx="360" cy="140" r="8" fill="#ff00ff" />
+        
+        <!-- Data Stream -->
+        <rect x="200" y="220" width="200" height="20" fill="#000" stroke="#ffff00" stroke-width="1" />
+        <rect x="200" y="245" width="200" height="20" fill="#000" stroke="#ffff00" stroke-width="1" />
+        
+        <!-- System Labels -->
+        <text x="300" y="170" text-anchor="middle" fill="#00ffff" font-size="14" font-family="Courier New">SYSTEM</text>
+        <text x="300" y="185" text-anchor="middle" fill="#ff00ff" font-size="12" font-family="Courier New">CONTROL</text>
+      </svg>
+    </div>
+
+    <div class="system-grid">
+      <div class="panel">
+        <h2>Primary Controls</h2>
+        <div class="control-group">
+          <label for="power">Power Level</label>
+          <input type="range" id="power" min="0" max="100" value="50">
+        </div>
+        <div class="control-group">
+          <label for="mode">System Mode</label>
+          <select id="mode">
+            <option value="normal">Normal</option>
+            <option value="secure">Secure</option>
+            <option value="emergency">Emergency</option>
+            <option value="maintenance">Maintenance</option>
+          </select>
+        </div>
+        <button id="activate-btn">ACTIVATE SYSTEM</button>
+      </div>
+
+      <div class="panel">
+        <h2>Secondary Controls</h2>
+        <div class="control-group">
+          <label for="frequency">Frequency</label>
+          <input type="range" id="frequency" min="100" max="999" value="456">
+        </div>
+        <div class="control-group">
+          <label for="modulation">Modulation</label>
+          <select id="modulation">
+            <option value="am">AM</option>
+            <option value="fm">FM</option>
+            <option value="digital">Digital</option>
+          </select>
+        </div>
+        <button id="calibrate-btn">CALIBRATE</button>
+      </div>
+
+      <div class="panel">
+        <h2>Status Monitor</h2>
+        <div class="status-display" id="status">
+          <p>System: <span id="system-status">INITIALIZING</span></p>
+          <p>Power: <span id="power-level">50%</span></p>
+          <p>Frequency: <span id="frequency-value">456 MHz</span></p>
+        </div>
+        <button id="reset-btn">RESET SYSTEM</button>
+      </div>
+    </div>
+
+    <footer>
+      <p>Cassette Futurism System Operator v1.0 | Offline Interface</p>
+    </footer>
+  </div>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      // Get DOM elements
+      const powerSlider = document.getElementById('power');
+      const modeSelect = document.getElementById('mode');
+      const frequencySlider = document.getElementById('frequency');
+      const modulationSelect = document.getElementById('modulation');
+      const activateBtn = document.getElementById('activate-btn');
+      const calibrateBtn = document.getElementById('calibrate-btn');
+      const resetBtn = document.getElementById('reset-btn');
+      const systemStatus = document.getElementById('system-status');
+      const powerLevel = document.getElementById('power-level');
+      const frequencyValue = document.getElementById('frequency-value');
+
+      // Update display values
+      function updateDisplay() {
+        powerLevel.textContent = `${powerSlider.value}%`;
+        frequencyValue.textContent = `${frequencySlider.value} MHz`;
+      }
+
+      // Initialize display
+      updateDisplay();
+
+      // Event listeners
+      powerSlider.addEventListener('input', updateDisplay);
+      frequencySlider.addEventListener('input', updateDisplay);
+
+      activateBtn.addEventListener('click', function() {
+        systemStatus.textContent = 'ACTIVE';
+        systemStatus.style.color = '#00ffff';
+        alert('System activation sequence initiated. Please wait...');
+      });
+
+      calibrateBtn.addEventListener('click', function() {
+        systemStatus.textContent = 'CALIBRATING';
+        systemStatus.style.color = '#ffff00';
+        alert('Calibration in progress...');
+      });
+
+      resetBtn.addEventListener('click', function() {
+        powerSlider.value = 50;
+        frequencySlider.value = 456;
+        modeSelect.value = 'normal';
+        modulationSelect.value = 'am';
+        systemStatus.textContent = 'INITIALIZING';
+        systemStatus.style.color = '#00ffff';
+        updateDisplay();
+        alert('System reset complete.');
+      });
+
+      // Simulate system status changes
+      setInterval(() => {
+        if (systemStatus.textContent === 'ACTIVE') {
+          const statuses = ['STABLE', 'OPTIMAL', 'CRITICAL'];
+          const randomStatus = statuses[Math.floor(Math.random() * statuses.length)];
+          systemStatus.textContent = randomStatus;
+          systemStatus.style.color = randomStatus === 'CRITICAL' ? '#ff0000' : '#00ffff';
+        }
+      }, 5000);
+    });
+  </script>
+</body>
+</html>

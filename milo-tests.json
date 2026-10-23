@@ -1,0 +1,34 @@
+{
+  "browser": [
+    {
+      "name": "System Activation Test",
+      "page": "index.html",
+      "steps": [
+        {
+          "action": "click",
+          "selector": "#activate-btn"
+        },
+        {
+          "action": "text_contains",
+          "selector": "#system-status",
+          "value": "ACTIVE"
+        }
+      ]
+    },
+    {
+      "name": "Calibration Test",
+      "page": "index.html",
+      "steps": [
+        {
+          "action": "click",
+          "selector": "#calibrate-btn"
+        },
+        {
+          "action": "text_contains",
+          "selector": "#system-status",
+          "value": "CALIBRATING"
+        }
+      ]
+    }
+  ]
+}
